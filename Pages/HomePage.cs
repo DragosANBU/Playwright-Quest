@@ -1,4 +1,4 @@
-using System.Threading.Tasks;
+//using System.Threading.Tasks;
 using Microsoft.Playwright;
 
 namespace PlaywrightQuest.Pages;
@@ -28,7 +28,7 @@ public class HomePage
         await Assertions.Expect(_page.GetByRole(AriaRole.Link, new() { Name = "Website for automation" })).ToBeVisibleAsync();
     }
 
-    public async Task GoToSignupOrLoginPage()
+    public async Task GoToLoginPage()
     {
         await _page.GetByRole(AriaRole.Link, new() { Name = " Signup / Login" }).ClickAsync();
     }
@@ -46,6 +46,16 @@ public class HomePage
     public async Task GoToContactUsPage()
     {
         await _page.GetByRole(AriaRole.Link, new() { Name = " Contact us" }).ClickAsync();
+    }
+
+    public async Task DeleteAccount()
+    {
+        await _page.GetByRole(AriaRole.Link, new() { Name = " Delete Account" }).ClickAsync();
+    }
+
+    public async Task VerifyDeleteAccount()
+    {
+        await _page.GetByText("Account Deleted!").ClickAsync();
     }
 
     //public async Task CheckForAdds()

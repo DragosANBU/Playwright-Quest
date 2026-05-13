@@ -19,21 +19,26 @@ public class LoginPage
 
     public async Task Login(string email, string password)
     {
-        await _page.Locator(".login-form").GetByPlaceholder("Email Address").FillAsync(email);
-        await _page.Locator(".login-form").GetByPlaceholder("Password").FillAsync(password);
+        await _page.Locator("form").Filter(new() { HasText = "Login" }).GetByPlaceholder("Email Address").FillAsync(email);
+        await _page.GetByRole(AriaRole.Textbox, new() { Name = "Password" }).FillAsync(password);
         await _page.GetByRole(AriaRole.Button, new() { Name = "Login" }).ClickAsync();
     }
 
     public async Task VerifyLogin()
     {
-        await Assertions.Expect(_page.GetByText("Logged in as")).ToBeVisibleAsync();
+        await Assertions.Expect(_page.GetByText("Logged in as Dragos")).ToBeVisibleAsync();
         await Assertions.Expect(_page.GetByRole(AriaRole.Link, new() { Name = " Delete Account" })).ToBeVisibleAsync();
+    }
+
+    public async Task VerifyLoginInvalid()
+    {
+        await Assertions.Expect(_page.GetByText("Your email or password is")).ToBeVisibleAsync();
     }
 
     public async Task Signup(User user)
     {
-        await _page.Locator(".signup-form").GetByPlaceholder("Name").FillAsync(user.Name);
-        await _page.Locator(".signup-form").GetByPlaceholder("Email Address").FillAsync(user.Email);
+        await _page.GetByRole(AriaRole.Textbox, new() { Name = "Name" }).FillAsync(user.Name);
+        await _page.Locator("form").Filter(new() { HasText = "Signup" }).GetByPlaceholder("Email Address").FillAsync(user.Email);
 
         await _page.GetByRole(AriaRole.Button, new() { Name = "Signup" }).ClickAsync();
         await Assertions.Expect(_page.GetByText("Enter Account Information")).ToBeVisibleAsync();
@@ -65,5 +70,10 @@ public class LoginPage
     public async Task VerifySignup()
     {
         await Assertions.Expect(_page.GetByText("Account Created!")).ToBeVisibleAsync();
+    }
+
+    public async Task Logout()
+    {
+        await _page.GetByRole(AriaRole.Link, new() { Name = " Logout" }).ClickAsync();
     }
 }

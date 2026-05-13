@@ -13,7 +13,7 @@ public class User
     public string ZipCode { get; set; } = "";
     public string PhoneNumber { get; set; } = "";
 
-    public static User CreateValidUser()
+    public static User CreateRandomValidUser()
     {
         return new User
         {
@@ -25,8 +25,8 @@ public class User
             Address = "Str. Mea 66",
             State = "Dolj",
             City = "Craiova",
-            ZipCode = Random.Shared.Next(10000, 99999).ToString(),
-            PhoneNumber = "076" + Random.Shared.Next(1000000, 9999999),
+            ZipCode = Random.Shared.Next(20000, 29999).ToString(),
+            PhoneNumber = "07" + Random.Shared.Next(10000000, 99999999),
         };
     }
 }
