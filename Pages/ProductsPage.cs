@@ -61,6 +61,19 @@ public class ProductsPage
         await _page.GetByText("Add to cart").Nth(1).ClickAsync();
     }
 
+    public async Task AddFirstItemToCartMultipleTimes(int quantity)
+    {
+        while (quantity > 1)
+        {
+            await _page.GetByText("Blue Top").First.HoverAsync();
+            await _page.GetByText("Add to cart").Nth(1).ClickAsync();
+            await _page.GetByRole(AriaRole.Button, new() { Name = "Continue Shopping" }).ClickAsync();
+            quantity--;
+        }
+        await _page.GetByText("Blue Top").First.HoverAsync();
+        await _page.GetByText("Add to cart").Nth(1).ClickAsync();
+    }
+
     public async Task AddSecondItemToCart()
     {
         await _page.GetByText("Men Tshirt").Nth(1).HoverAsync();

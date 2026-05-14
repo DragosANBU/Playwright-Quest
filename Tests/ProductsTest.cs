@@ -22,7 +22,6 @@ public class ProductsTest : PageTest
     }
 
     [Test]
-    // 5th Test
     // Test Case 8: Verify All Products and product detail page - from Test Cases - https://www.automationexercise.com/test_cases
     public async Task VerifyAllProductsAndDetail()
     {
@@ -40,7 +39,6 @@ public class ProductsTest : PageTest
     }
 
     [Test]
-    // 6th Test
     // Test Case 9: Search Product - from Test Cases - https://www.automationexercise.com/test_cases
     public async Task SearchProduct()
     {

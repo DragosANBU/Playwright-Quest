@@ -22,7 +22,6 @@ namespace PlaywrightQuest.Tests
         }
 
         [Test]
-        // 10th Test
         // Test Case 16: Place Order: Login before Checkout - from Test Cases - https://www.automationexercise.com/test_cases
         public async Task PlaceOrderWithLogin()
         {
