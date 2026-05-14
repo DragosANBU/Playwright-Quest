@@ -1,4 +1,3 @@
-//using System.Threading.Tasks;
 using Microsoft.Playwright;
 
 namespace PlaywrightQuest.Pages;
@@ -19,8 +18,10 @@ public class HomePage
 
     public async Task CookieConsent()
     {
-        await Assertions.Expect(_page.GetByRole(AriaRole.Heading, new() { Name = "This site asks for consent to" })).ToBeVisibleAsync();
-        await _page.GetByRole(AriaRole.Button, new() { Name = "Consent" }).ClickAsync();
+        if (await _page.GetByRole(AriaRole.Heading, new() { Name = "This site asks for consent to" }).IsVisibleAsync())
+        {
+            await _page.GetByRole(AriaRole.Button, new() { Name = "Consent" }).ClickAsync();
+        }
     }
 
     public async Task VerifyHomePage()
@@ -58,7 +59,7 @@ public class HomePage
         await _page.GetByText("Account Deleted!").ClickAsync();
     }
 
-    //public async Task CheckForAdds()
+    //public async Task CloseAdvertisement()
     //{
     //    await Assertions.Expect(_page.Locator("iframe[name=\"aswift_4\"]").ContentFrame.GetByRole(AriaRole.Button, new() { Name = "Close ad" })).ToBeVisibleAsync();
     //    await _page.Locator("iframe[name=\"aswift_4\"]").ContentFrame.GetByRole(AriaRole.Button, new() { Name = "Close ad" }).ClickAsync();

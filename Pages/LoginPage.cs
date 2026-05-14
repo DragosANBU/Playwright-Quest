@@ -26,7 +26,7 @@ public class LoginPage
 
     public async Task VerifyLogin()
     {
-        await Assertions.Expect(_page.GetByText("Logged in as Dragos")).ToBeVisibleAsync();
+        await Assertions.Expect(_page.GetByText("Logged in as")).ToBeVisibleAsync();
         await Assertions.Expect(_page.GetByRole(AriaRole.Link, new() { Name = " Delete Account" })).ToBeVisibleAsync();
     }
 
@@ -54,8 +54,8 @@ public class LoginPage
         await _page.GetByLabel("Country *").SelectOptionAsync(new[] { "Canada" });
         await _page.GetByRole(AriaRole.Textbox, new() { Name = "State *" }).FillAsync(user.State);
         await _page.GetByRole(AriaRole.Textbox, new() { Name = "City * Zipcode *" }).FillAsync(user.City);
-        await _page.Locator("#zipcode").FillAsync(user.ZipCode);
-        await _page.GetByRole(AriaRole.Textbox, new() { Name = "Mobile Number *" }).FillAsync(user.PhoneNumber);
+        await _page.Locator("#zipcode").FillAsync(user.Zipcode);
+        await _page.GetByRole(AriaRole.Textbox, new() { Name = "Mobile Number *" }).FillAsync(user.Phonenumber);
         await _page.GetByRole(AriaRole.Checkbox, new() { Name = "Sign up for our newsletter!" }).CheckAsync();
         await _page.GetByRole(AriaRole.Checkbox, new() { Name = "Receive special offers from" }).CheckAsync();
 

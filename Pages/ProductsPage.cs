@@ -54,4 +54,36 @@ public class ProductsPage
             Assert.That(text, Does.Contain(search.Name));
         }
     }
+
+    public async Task AddFirstItemToCart()
+    {
+        await _page.GetByText("Blue Top").First.HoverAsync();
+        await _page.GetByText("Add to cart").Nth(1).ClickAsync();
+    }
+
+    public async Task AddSecondItemToCart()
+    {
+        await _page.GetByText("Men Tshirt").Nth(1).HoverAsync();
+        await _page.GetByText("Add to cart").Nth(3).ClickAsync();
+    }
+
+    public async Task ContinueShopping()
+    {
+        await _page.GetByRole(AriaRole.Button, new() { Name = "Continue Shopping" }).ClickAsync();
+    }
+
+    public async Task ViewCartAfterAddToCart()
+    {
+        await _page.GetByRole(AriaRole.Link, new() { Name = "View Cart" }).ClickAsync();
+    }
+
+    public async Task ChangeQuantity(string quantity)
+    {
+        await _page.Locator("#quantity").FillAsync(quantity);
+    }
+
+    public async Task AddToCart()
+    {
+        await _page.GetByRole(AriaRole.Button, new() { Name = " Add to cart" }).ClickAsync();
+    }
 }
