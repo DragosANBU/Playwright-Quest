@@ -29,6 +29,11 @@ public class HomePage
         await Assertions.Expect(_page.GetByRole(AriaRole.Link, new() { Name = "Website for automation" })).ToBeVisibleAsync();
     }
 
+    public async Task GotoHomePage()
+    {
+        await _page.GetByRole(AriaRole.Link, new() { Name = " Home" }).ClickAsync();
+    }
+
     public async Task GoToLoginPage()
     {
         await _page.GetByRole(AriaRole.Link, new() { Name = " Signup / Login" }).ClickAsync();
@@ -57,6 +62,11 @@ public class HomePage
     public async Task VerifyDeleteAccount()
     {
         await _page.GetByText("Account Deleted!").ClickAsync();
+    }
+
+    public async Task RefreshPage()
+    {
+        await _page.ReloadAsync();
     }
 
     //public async Task CloseAdvertisement()

@@ -56,4 +56,9 @@ public class CartPage
     {
         await _page.GetByText("Proceed To Checkout").ClickAsync();
     }
+
+    public async Task VerifyProductQuantityInCart(string quantity)
+    {
+        await Assertions.Expect(_page.GetByRole(AriaRole.Button, new() { Name = quantity })).ToBeVisibleAsync();
+    }
 }
