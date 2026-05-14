@@ -7,19 +7,19 @@ namespace PlaywrightQuest.Tests
 {
     internal class CheckoutTest : PageTest
     {
-        //Record video for the test - it will be saved in /bin/Debug/net10.0/videos
-        public override BrowserNewContextOptions ContextOptions()
-        {
-            return new BrowserNewContextOptions
-            {
-                RecordVideoDir = "videos/",
-                RecordVideoSize = new()
-                {
-                    Width = 1280,
-                    Height = 720
-                }
-            };
-        }
+        ////Record video for the test - it will be saved in /bin/Debug/net10.0/videos
+        //public override BrowserNewContextOptions ContextOptions()
+        //{
+        //    return new BrowserNewContextOptions
+        //    {
+        //        RecordVideoDir = "videos/",
+        //        RecordVideoSize = new()
+        //        {
+        //            Width = 1280,
+        //            Height = 720
+        //        }
+        //    };
+        //}
 
         [Test]
         // Test Case 16: Place Order: Login before Checkout - from Test Cases - https://www.automationexercise.com/test_cases
